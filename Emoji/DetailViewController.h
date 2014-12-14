@@ -7,11 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DetailViewController : UIViewController
-
+#import "JSMessageInputView.h"
+#import "JSMessageTextView.h"
+#import "EmotionsViewController.h"
+#import "RecorderManager.h"
+#import "PlayerManager.h"
+#import "ChatUtilityViewController.h"
+@class RecordingView;
+@interface DetailViewController : UIViewController<JSMessageInputViewDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, DDEmotionsViewControllerDelegate, RecordingDelegate, PlayingDelegate, ChatUtilityViewControllerDelegate>
+{
+    RecordingView* _recordingView;
+}
 @property (strong, nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-
+@property(nonatomic,strong)JSMessageInputView *chatInputView;
+@property(nonatomic,strong)ChatUtilityViewController *ddUtility;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic,strong)EmotionsViewController *emotions;
 @end
 
